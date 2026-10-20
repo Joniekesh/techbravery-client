@@ -60,9 +60,9 @@ import EmployeeNotification from "./pages/employee/Notifications";
 import EmployeeSettings from "./pages/employee/Settings";
 import EmployeeFileManager from "./pages/employee/FileManager";
 import EmployeeAttendanceCalendar from "./pages/employee/AttendanceCalendar";
-import VerifyAccount from "./pages/auth/VerifyAccount";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import ResetPassword from "./pages/auth/ResetPassword";
+import VerifyAccount from "./pages/VerifyAccount";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import {
   AdminLayout,
   AuthLayout,
