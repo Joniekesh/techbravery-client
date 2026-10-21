@@ -16,94 +16,46 @@ import heroImage from "@/assets/hero-bg.jpg";
 import SEOHead from "@/components/SEOHead";
 
 /**
- * Animated globe inspired by global network visualizations.
- * Uses SVG and CSS instead of WebGL, keeping it lightweight.
+ * Static globe representing TechBravery's global technology network.
+ * Preserves the original visual components without continuous animation.
  */
 const GlobeVisual = () => {
-  const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const spinTransition = reduceMotion
-    ? { duration: 0 }
-    : {
-        duration: 38,
-        repeat: Infinity,
-        ease: "linear" as const,
-      };
-
   return (
     <div
       className="relative mx-auto aspect-square w-full max-w-[620px]"
-      aria-label="Animated globe representing TechBravery's global technology network"
+      aria-label="Globe representing TechBravery's global technology network"
       role="img"
     >
       {/* Atmospheric glow */}
       <div className="absolute inset-[10%] rounded-full bg-primary/15 blur-[65px]" />
       <div className="absolute inset-[20%] rounded-full bg-primary/10 blur-[35px]" />
 
-      {/* Orbital paths */}
-      <motion.div
-        animate={mounted && !reduceMotion ? { rotate: 360 } : undefined}
-        transition={{
-          duration: 50,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+      {/* Static orbital paths */}
+      <div
         className="absolute inset-[5%] rounded-full border border-primary/20"
         style={{ transform: "rotate(-25deg) scaleY(0.36)" }}
       />
-
-      <motion.div
-        animate={mounted && !reduceMotion ? { rotate: -360 } : undefined}
-        transition={{
-          duration: 65,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+      <div
         className="absolute inset-[12%] rounded-full border border-primary/15"
         style={{ transform: "rotate(35deg) scaleY(0.56)" }}
       />
 
-      {/* Orbiting nodes */}
-      <motion.div
-        animate={mounted && !reduceMotion ? { rotate: 360 } : undefined}
-        transition={{
-          duration: 24,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute inset-[5%] z-20"
-      >
+      {/* Static orbital nodes */}
+      <div className="absolute inset-[5%] z-20">
         <span className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-primary shadow-[0_0_22px_hsl(var(--primary))]" />
-      </motion.div>
+      </div>
 
-      <motion.div
-        animate={mounted && !reduceMotion ? { rotate: -360 } : undefined}
-        transition={{
-          duration: 32,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute inset-[12%] z-20"
-      >
+      <div className="absolute inset-[12%] z-20">
         <span className="absolute right-[5%] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-primary-glow shadow-[0_0_20px_hsl(var(--primary-glow))]" />
-      </motion.div>
+      </div>
 
       {/* Globe body */}
       <div className="absolute inset-[17%] overflow-hidden rounded-full border border-primary/30 bg-background/70 shadow-[inset_-22px_-10px_65px_hsl(var(--primary)/0.15),0_0_55px_hsl(var(--primary)/0.12)] backdrop-blur-sm">
         {/* Sphere lighting */}
         <div className="pointer-events-none absolute inset-0 z-10 rounded-full bg-[radial-gradient(circle_at_30%_25%,hsl(var(--primary)/0.13),transparent_42%),radial-gradient(circle_at_70%_75%,transparent_25%,hsl(var(--background)/0.8)_100%)]" />
 
-        {/* Rotating longitude texture */}
-        <motion.div
-          animate={mounted && !reduceMotion ? { rotate: 360 } : undefined}
-          transition={spinTransition}
-          className="absolute inset-0"
-        >
+        {/* Static globe texture */}
+        <div className="absolute inset-0">
           <svg
             viewBox="0 0 400 400"
             className="h-full w-full"
@@ -115,6 +67,7 @@ const GlobeVisual = () => {
               <clipPath id="globeClip">
                 <circle cx="200" cy="200" r="198" />
               </clipPath>
+
               <radialGradient id="globeFill" cx="35%" cy="30%" r="80%">
                 <stop
                   offset="0%"
@@ -169,7 +122,7 @@ const GlobeVisual = () => {
                 strokeOpacity=".3"
               />
 
-              {/* Stylized continents */}
+              {/* Continents */}
               <g
                 fill="hsl(var(--primary))"
                 fillOpacity=".5"
@@ -230,13 +183,13 @@ const GlobeVisual = () => {
               ))}
             </g>
           </svg>
-        </motion.div>
+        </div>
 
         {/* Fixed highlight */}
         <div className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(120deg,transparent_30%,hsl(var(--primary)/0.08)_55%,transparent_75%)]" />
       </div>
 
-      {/* Data connection arcs */}
+      {/* Static data connection arcs */}
       <svg
         viewBox="0 0 600 600"
         className="pointer-events-none absolute inset-0 h-full w-full"
@@ -259,16 +212,8 @@ const GlobeVisual = () => {
         />
       </svg>
 
-      {/* Floating information cards */}
-      <motion.div
-        animate={mounted && !reduceMotion ? { y: [0, -9, 0] } : undefined}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute left-0 top-[24%] z-20 rounded-xl border border-primary/20 bg-background/85 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:left-2 sm:px-4"
-      >
+      {/* Static floating information cards */}
+      <div className="absolute left-0 top-[24%] z-20 rounded-xl border border-primary/20 bg-background/85 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:left-2 sm:px-4">
         <div className="flex items-center gap-2.5">
           <div className="rounded-lg bg-primary/10 p-2">
             <Globe2 className="h-4 w-4 text-primary" />
@@ -282,18 +227,9 @@ const GlobeVisual = () => {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        animate={mounted && !reduceMotion ? { y: [0, 8, 0] } : undefined}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-        className="absolute bottom-[21%] right-0 z-20 rounded-xl border border-primary/20 bg-background/85 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:right-1 sm:px-4"
-      >
+      <div className="absolute bottom-[21%] right-0 z-20 rounded-xl border border-primary/20 bg-background/85 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:right-1 sm:px-4">
         <div className="flex items-center gap-2.5">
           <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
             <span className="absolute h-2 w-2 translate-x-3 -translate-y-3 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10" />
@@ -308,7 +244,7 @@ const GlobeVisual = () => {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Globe caption */}
       <div className="absolute bottom-[6%] left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
