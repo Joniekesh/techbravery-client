@@ -66,54 +66,57 @@ const Platforms = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary-glow/10" />
+      <section className="relative isolate overflow-hidden border-b border-border">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/investment-image.png')",
+          }}
+          aria-hidden="true"
+        />
 
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-8 lg:py-24">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="max-w-2xl text-left"
+          >
+            {/* Eyebrow */}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-3 py-1.5 text-xs font-medium tracking-wide text-white backdrop-blur-sm sm:text-sm">
+              <span className="h-2 w-2 rounded-full bg-teal-300 shadow-[0_0_10px_rgba(94,234,212,0.8)]" />
+              TECHBRAVERY · PROPRIETARY PRODUCTS
+            </div>
+
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              Our Proprietary
+              <br className="hidden sm:block" /> Digital Products
+              <span className="mt-1 block text-teal-300">Built for Scale</span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-sm leading-6 text-white sm:text-base sm:leading-7 lg:text-lg">
+              Discover digital platforms built to solve meaningful problems and
+              unlock new opportunities across technology, financial services,
+              artificial intelligence, and digital infrastructure.
+            </p>
+
+            <p className="mt-3 max-w-xl text-sm leading-6 text-white/90 sm:text-base sm:leading-7">
+              Independently developed by Techbravery, our products combine
+              innovation, scalable engineering, and long-term intellectual
+              property development.
+            </p>
+
+            <Button
+              type="button"
+              size="lg"
+              onClick={handleExploreProducts}
+              className="mt-7 rounded-lg bg-teal-400 px-6 font-semibold text-[#003b37] shadow-lg shadow-black/10 transition-all hover:bg-teal-300"
             >
-              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-                <Rocket className="h-7 w-7 text-primary" />
-              </div>
-
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                Our Proprietary Digital Products
-                <span className="block bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                  Built for Scale
-                </span>
-              </h1>
-
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-                Explore our platforms developed after identifying meaningful
-                problems and turning them into scalable digital products. We
-                explore opportunities where software, data, financial
-                technology, AI and digital infrastructure can create new ways
-                for people and businesses to operate.
-              </p>
-
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-                Our products are developed independently from client
-                engagements, allowing Techbravery to build long-term
-                intellectual property and product businesses alongside its
-                technology-services operation.
-              </p>
-
-              {/* Explore Products */}
-              <Button
-                type="button"
-                size="lg"
-                onClick={handleExploreProducts}
-                className="mt-6 bg-gradient-to-r from-primary to-primary-glow"
-              >
-                Explore Our Products
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
-          </div>
+              Explore Our Products
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
         </div>
       </section>
 

@@ -178,6 +178,14 @@ All color values use HSL components.
     @apply border-border;
   }
 
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+  }
+
   html {
     scroll-behavior: smooth;
     text-size-adjust: 100%;

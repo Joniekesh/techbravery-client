@@ -231,24 +231,6 @@ const Navbar = () => {
             <Logo size="lg" className="transition-transform duration-300" />
           </div>
 
-          {/* <div className="hidden lg:flex">
-            <ConnectButton
-              accountStatus={{
-                smallScreen: "avatar",
-                largeScreen: "full",
-              }}
-              chainStatus="icon"
-              showBalance={{
-                smallScreen: false,
-                largeScreen: true,
-              }}
-            />
-          </div> */}
-
-          {/* =====================================================
-              DESKTOP NAVIGATION
-          ====================================================== */}
-
           <div className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
               <div

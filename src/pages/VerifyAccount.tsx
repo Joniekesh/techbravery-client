@@ -180,7 +180,7 @@ const VerifyAccount = () => {
                 type="submit"
                 size="lg"
                 disabled={clicked || loadingResend || otp.length !== 6}
-                className="mt-5 h-12 w-full bg-linear-to-r from-primary to-primary-glow font-semibold shadow-md transition-all hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full bg-gradient-to-r from-primary via-primary-glow to-primary font-semibold shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {clicked ? (
                   <span className="flex items-center gap-2">
