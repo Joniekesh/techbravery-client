@@ -232,7 +232,7 @@ const Navbar = () => {
             <Logo size="xl" className="transition-transform duration-300" />
           </div>
 
-          <div className="hidden lg:flex">
+          {/* <div className="hidden lg:flex">
             <ConnectButton
               accountStatus={{
                 smallScreen: "avatar",
@@ -244,7 +244,7 @@ const Navbar = () => {
                 largeScreen: true,
               }}
             />
-          </div>
+          </div> */}
 
           {/* =====================================================
               DESKTOP NAVIGATION
@@ -363,7 +363,7 @@ const Navbar = () => {
                 MOBILE CONNECT WALLET
             ==================================================== */}
 
-            <div className="lg:hidden">
+            {/* <div className="lg:hidden">
               <ConnectButton
                 accountStatus={{
                   smallScreen: "avatar",
@@ -375,11 +375,7 @@ const Navbar = () => {
                   largeScreen: false,
                 }}
               />
-            </div>
-
-            {/* ===================================================
-                GET QUOTE
-            ==================================================== */}
+            </div> */}
 
             <Button
               asChild
@@ -390,10 +386,6 @@ const Navbar = () => {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-
-            {/* ===================================================
-                NOTIFICATIONS
-            ==================================================== */}
 
             {user && (
               <Button
@@ -421,14 +413,7 @@ const Navbar = () => {
                   <DropdownMenuTrigger asChild>
                     <button
                       type="button"
-                      className="
-            rounded-full
-            outline-none
-            ring-offset-background
-            transition
-            focus-visible:ring-2
-            focus-visible:ring-primary
-            focus-visible:ring-offset-2
+                      className="rounded-full outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
           "
                       aria-label="Open account menu"
                     >
