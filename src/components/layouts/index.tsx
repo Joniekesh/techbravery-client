@@ -100,7 +100,7 @@ export const AuthLayout = () => {
   return (
     <div className="max-h-screen w-full bg-background text-foreground overflow-auto">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="-ml-7">
             <Logo size="lg" className="transition-transform duration-300" />
           </div>

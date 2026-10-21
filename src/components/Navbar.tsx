@@ -33,7 +33,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout } from "@/redux/actions/authActions";
 
 import { ThemeToggle } from "@/ThemeToggle";
-import { useTheme } from "./ThemeProvider";
 
 import { makeRequest } from "@/utils/makeRequest";
 
