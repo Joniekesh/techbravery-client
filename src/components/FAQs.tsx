@@ -146,14 +146,6 @@ export default function FAQs() {
       aria-labelledby="contact-faq-heading"
       className="relative overflow-hidden border-t border-border bg-secondary/20 py-16 sm:py-20 lg:py-24"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-      >
-        <div className="absolute -left-32 top-20 h-64 w-64 rounded-full bg-primary/[0.06] blur-3xl" />
-        <div className="absolute -right-32 bottom-10 h-72 w-72 rounded-full bg-primary/[0.05] blur-3xl" />
-      </div>
-
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section heading */}
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
