@@ -30,46 +30,9 @@ import { AuthUser, Role } from "@/types/user";
 import SocialLoginButtons from "@/components/shared/SocialLoginButtons";
 
 import SEOHead from "@/components/SEOHead";
+import { getDefaultDashboard } from "@/utils/getDefaultDashboard";
 
 type SocialProvider = "google" | "apple" | null;
-
-export const getDefaultDashboard = (user: AuthUser): string => {
-  if (!user) {
-    return "/";
-  }
-
-  const role = String(user.role).toUpperCase();
-
-  switch (role) {
-    case String(Role.ADMIN).toUpperCase():
-      return "/admin-dashboard";
-
-    case String(Role.STAFF).toUpperCase():
-      return "/staff-dashboard";
-
-    case String(Role.USER).toUpperCase(): {
-      const isClient = Boolean(user.isClient);
-      const isInvestor = Boolean(user.isInvestor);
-
-      if (isClient && isInvestor) {
-        return "/client-dashboard";
-      }
-
-      if (isClient) {
-        return "/client-dashboard";
-      }
-
-      if (isInvestor) {
-        return "/investor-dashboard";
-      }
-
-      return "/";
-    }
-
-    default:
-      return "/";
-  }
-};
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -107,16 +70,33 @@ const Login = () => {
     return getDefaultDashboard(authenticatedUser);
   };
 
-  const redirect =
-    location.state?.from?.pathname ||
-    sessionStorage.getItem("redirectAfterLogin") ||
-    "/";
-
   useEffect(() => {
-    if (auth.user) {
-      navigate(redirect, { replace: true });
+    if (!auth.user) return;
+
+    const from = location.state?.from;
+
+    if (typeof from === "string") {
+      navigate(from, { replace: true });
+      return;
     }
-  }, [auth.user, navigate, redirect]);
+
+    if (from?.pathname) {
+      navigate(`${from.pathname}${from.search || ""}${from.hash || ""}`, {
+        replace: true,
+      });
+      return;
+    }
+
+    const storedRedirect = sessionStorage.getItem("redirectAfterLogin");
+
+    if (storedRedirect) {
+      sessionStorage.removeItem("redirectAfterLogin");
+      navigate(storedRedirect, { replace: true });
+      return;
+    }
+
+    navigate(getDefaultDashboard(auth.user), { replace: true });
+  }, [auth.user, location.state, navigate]);
 
   useEffect(() => {
     return () => {
