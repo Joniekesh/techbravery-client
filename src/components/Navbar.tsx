@@ -229,7 +229,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between gap-3">
           {/* LOGO */}
           <div className="-ml-7">
-            <Logo size="xl" className="transition-transform duration-300" />
+            <Logo size="lg" className="transition-transform duration-300" />
           </div>
 
           {/* <div className="hidden lg:flex">
