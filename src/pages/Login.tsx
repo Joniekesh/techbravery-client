@@ -216,7 +216,7 @@ const Login = () => {
       <div className="h-screen flex flex-col bg-gradient-to-br from-background via-background to-accent/20">
         <div className="flex-1 flex items-center justify-center px-4 py-12 sm:py-20">
           <div className="w-full max-w-md">
-            <Card className="overflow-hidden bg-card/95 shadow-2xl shadow-black/5 backdrop-blur-xl">
+            <Card className="max-w-md w-full bg-linear-to-br from-card to-accent/10 border-0 shadow-2xl">
               <CardHeader className="space-y-2 pb-6 pt-8">
                 <CardTitle className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
                   Welcome Back
