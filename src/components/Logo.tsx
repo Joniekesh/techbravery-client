@@ -12,10 +12,10 @@ interface LogoProps {
 }
 
 const logoSizes: Record<LogoSize, string> = {
-  sm: "h-10 min-[400px]:h-9 sm:h-8",
-  md: "h-12 min-[400px]:h-11 sm:h-10",
-  lg: "h-14 min-[400px]:h-12 sm:h-12",
-  xl: "h-16 min-[400px]:h-14 sm:h-16",
+  sm: "h-9 sm:h-8",
+  md: "h-11 sm:h-10",
+  lg: "h-12 sm:h-12",
+  xl: "h-14 sm:h-16",
 };
 
 export const Logo = ({
