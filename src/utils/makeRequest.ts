@@ -3,14 +3,24 @@ import type { AxiosError, AxiosRequestConfig } from "axios";
 import { store } from "../redux/store";
 import { logout } from "@/redux/actions/authActions";
 
+const baseURL = import.meta.env.VITE_API_BASE_URL;
+
 export const publicRequest = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL,
   withCredentials: true,
+  // headers: {
+  //   "x-client-type": "web",
+  // },
+  // timeout: 30000,
 });
 
 export const makeRequest = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL,
   withCredentials: true,
+  // headers: {
+  //   "x-client-type": "web",
+  // },
+  // timeout: 30000,
 });
 
 let isRefreshing = false;
@@ -27,7 +37,11 @@ makeRequest.interceptors.response.use(
   async (error: AxiosError) => {
     const original = error.config as AxiosRequestConfig & { _retry?: boolean };
 
-    if (error.response?.status === 401 && !original._retry) {
+    if (
+      error.response?.status === 401 &&
+      !original._retry &&
+      !original.url?.includes("/auth/logout")
+    ) {
       original._retry = true;
 
       if (isRefreshing) {
@@ -39,10 +53,10 @@ makeRequest.interceptors.response.use(
       isRefreshing = true;
       try {
         // Call refresh endpoint (cookies automatically sent)
-        await axios.post(
-          `${import.meta.env.VITE_API_BASE_URL}/auth/refresh`,
+        await publicRequest.post(
+          `/auth/refresh`,
           {},
-          { withCredentials: true }
+          { withCredentials: true },
         );
         processQueue();
         return makeRequest(original); // retry
@@ -56,5 +70,5 @@ makeRequest.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );

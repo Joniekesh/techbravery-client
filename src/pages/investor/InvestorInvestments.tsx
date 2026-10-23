@@ -18,6 +18,8 @@ const InvestorInvestments = () => {
 
   const { data: profile, isLoading, isError, refetch } = useProfile(userId);
 
+  console.log("PROFILE", profile);
+
   const startOnboarding = async (
     investmentInterestId: string,
   ): Promise<string> => {
