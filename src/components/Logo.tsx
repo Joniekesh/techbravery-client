@@ -34,8 +34,8 @@ export const Logo = ({
       ? "/logo-dark-icon.png"
       : "/logo-light-icon.png"
     : isDark
-      ? "/logo-dark3.png"
-      : "/logo-light3.png";
+      ? "/logo-dark3-transparent.png"
+      : "/logo-light3-transparent.png";
 
   const image = (
     <img
